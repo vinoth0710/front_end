@@ -1,9 +1,14 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 import firebase from "firebase"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
-import "featuredInfo.jsx";
+import dash from "./pages/featuredInfo";
+import form from "./pages/form";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from "react-router-dom";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 firebase.initializeApp({
   apiKey: "AIzaSyBXpvNkuj20PF-PsRO4Vmz01Qj8fjsV1Uc",
@@ -38,12 +43,52 @@ class App extends Component {
     })
   }
 
+ 
+  
+
   render() {
     return (
-    <Route path="featuredInfo.jsx">
-    </Route>
+      <div className="App">
+      {this.state.isSignedIn ? (
+          <div className="App">
+          {this.state.isSignedIn ? (
+           
+            <span>
+              
+              <div>Signed In!</div>
+              <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
+              <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
+              <img
+                alt="profile picture"
+                src={firebase.auth().currentUser.photoURL}
+              />
+               <Router>
+         <Switch>
+           <Route exact path="/" component={dash} />
+           <Route exact path="/form" component={form} />
+           </Switch>
+           </Router>
+            </span>
+          ) : (
+            <StyledFirebaseAuth
+              uiConfig={this.uiConfig}
+              firebaseAuth={firebase.auth()}
+            />
+          )}
+        </div>
+        
+         
+      ) : (
+        <StyledFirebaseAuth
+          uiConfig={this.uiConfig}
+          firebaseAuth={firebase.auth()}
+        />
+      )}
+    </div>
+    
     )
   }
 }
+
 
 export default App
