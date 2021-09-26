@@ -1,12 +1,14 @@
 import "./featuredInfo.css";
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 import React from "react";
+import Layout from "../Layouts/Layout";
 
 
 export default function FeaturedInfo() {
   return (
-    
-    <div className="featured">
+  <Layout>
+      
+      <div className="featured">
       <div className="featuredItem">
         <span className="featuredTitle">ENROLL DEVICE</span>
         <div className="featuredMoneyContainer">
@@ -38,6 +40,7 @@ export default function FeaturedInfo() {
         <span className="featuredSub">Compared to last month</span>
       </div>
     </div>
+  </Layout>
   );
 }
 
