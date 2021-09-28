@@ -137,14 +137,7 @@ class deployform extends React.Component {
               onChange={this.handleChange}
             />
             <div className="errorMsg">{this.state.errors.mobileno}</div>
-            <label>Password</label>
-            <input
-              type="password"
-              name="password"
-              value={this.state.fields.password}
-              onChange={this.handleChange}
-            />
-            <div className="errorMsg">{this.state.errors.password}</div>
+
             <input type="submit" className="button" value="Register" />
           </form>
         </div>

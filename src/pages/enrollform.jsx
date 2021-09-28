@@ -42,13 +42,13 @@ class enrollform extends React.Component {
 
     if (!fields["username"]) {
       formIsValid = false;
-      errors["username"] = "*Please enter your username.";
+      errors["username"] = "*Please enter your IMEI number.";
     }
 
     if (typeof fields["username"] !== "undefined") {
       if (!fields["username"].match(/^[a-zA-Z ]*$/)) {
         formIsValid = false;
-        errors["username"] = "*Please enter alphabet characters only.";
+        errors["username"] = "*Please enter valid IMEI";
       }
     }
 
@@ -70,31 +70,17 @@ class enrollform extends React.Component {
 
     if (!fields["mobileno"]) {
       formIsValid = false;
-      errors["mobileno"] = "*Please enter your mobile no.";
+      errors["mobileno"] = "*Please enter your Device name";
     }
 
     if (typeof fields["mobileno"] !== "undefined") {
       if (!fields["mobileno"].match(/^[0-9]{10}$/)) {
         formIsValid = false;
-        errors["mobileno"] = "*Please enter valid mobile no.";
+        errors["mobileno"] = "*Please enter valid Device Name.";
       }
     }
 
-    if (!fields["password"]) {
-      formIsValid = false;
-      errors["password"] = "*Please enter your password.";
-    }
-
-    if (typeof fields["password"] !== "undefined") {
-      if (
-        !fields["password"].match(
-          /^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/
-        )
-      ) {
-        formIsValid = false;
-        errors["password"] = "*Please enter secure and strong password.";
-      }
-    }
+ 
 
     this.setState({
       errors: errors,
@@ -113,7 +99,7 @@ class enrollform extends React.Component {
             name="userRegistrationForm"
             onSubmit={this.submituserRegistrationForm}
           >
-            <label>Name</label>
+            <label>IMEI:</label>
             <input
               type="text"
               name="username"
@@ -125,11 +111,11 @@ class enrollform extends React.Component {
             <input
               type="text"
               name="emailid"
-              value={this.state.fields.emailid}
+              value={localStorage.emailid}
               onChange={this.handleChange}
             />
             <div className="errorMsg">{this.state.errors.emailid}</div>
-            <label>Mobile No:</label>
+            <label>Device Name:</label>
             <input
               type="text"
               name="mobileno"
@@ -137,14 +123,6 @@ class enrollform extends React.Component {
               onChange={this.handleChange}
             />
             <div className="errorMsg">{this.state.errors.mobileno}</div>
-            <label>Password</label>
-            <input
-              type="password"
-              name="password"
-              value={this.state.fields.password}
-              onChange={this.handleChange}
-            />
-            <div className="errorMsg">{this.state.errors.password}</div>
             <input type="submit" className="button" value="Register" />
           </form>
         </div>
