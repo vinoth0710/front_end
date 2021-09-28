@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import dash from "./pages/featuredInfo";
-import form from "./pages/form";
+import enrollform from "./pages/enrollform";
+import deployform from "./pages/deployform";
+import dashboard from "./pages/dashboard";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
@@ -9,8 +10,9 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" component={dash} />
-          <Route exact path="/form" component={form} />
+        <Route exact path="/" component={dashboard} />
+          <Route exact path="/enrollform" component={enrollform} />
+          <Route exact path="/deployform" component={deployform} />
         </Switch>
       </Router>
     );

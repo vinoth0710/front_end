@@ -1,8 +1,7 @@
 import React from "react";
-import Layout from "../Layouts/Layout";
-import "./RegisterForm.css";
+import "./enrollform.css";
 
-class RegisterForm extends React.Component {
+class enrollform extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -104,10 +103,11 @@ class RegisterForm extends React.Component {
   }
 
   render() {
+    
     return (
         <div id="main-registration-container">
         <div id="register">
-          <h3>Registration page</h3>
+          <h3>Device Enrolling</h3>
           <form
             method="post"
             name="userRegistrationForm"
@@ -153,4 +153,4 @@ class RegisterForm extends React.Component {
   }
 }
 
-export default RegisterForm;
+export default enrollform;
